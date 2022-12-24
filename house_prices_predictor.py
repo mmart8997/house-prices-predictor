@@ -13,9 +13,12 @@ from streamlit_folium import folium_static
 import streamlit.components.v1 as components
 from folium import plugins
 
-st.set_page_config(page_title="House Prices Predictor", page_icon='rocket')
+st.set_page_config(page_title="House Prices Predictor", page_icon='house')
 
 # dicionario com os nomes dos bairros e as informações de latitude e longitude
+
+st.sidebar.write('Gostou ou se interessou?')
+st.sidebar.write('Acesse o repositório no [github.](https://github.com/mmart8997/house-prices-predictor)')
 
 dict_bairro ={
             'bairro': 
