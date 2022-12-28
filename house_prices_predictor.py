@@ -117,7 +117,8 @@ bairro = [
 # titulo, subtitulo e instrução
 
 st.header('Previsão do valor do imóvel')
-st.subheader('Com base nas características do imóvel e bairro escolhido, veja qual é valor estimado da sua próxima residência.')
+st.write('### Com base nas características do imóvel e bairro escolhido, veja qual é valor estimado da sua próxima residência.')
+st.write('*O modelo estima apenas valores de casas.*')
 st.write('Informe as características do imóvel abaixo:')
 
 # separacao dos selectbox em colunas
@@ -180,6 +181,7 @@ q_area = st.slider(
     ,max_value=400
     )
 
+
 # carregar modelo
 arquivo = 'modelo_treinado_20221220.sav'
 loaded_model = pickle.load(open(arquivo,'rb'))
@@ -240,43 +242,49 @@ def prever_resultado(
     return previsao
 
 
+
+# outputs
+result = st.button('Carregar valor')
+
+
 # condicoes para a exibicao da previsao
 
+if result == True:
 
-if q_bairro == 'Aclimação':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)[0]))
-if q_bairro == 'Barcelona':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)[0]))
-if q_bairro == 'Boa_Vista':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0)[0]))
-if q_bairro == 'Ceramica':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0)[0]))
-if q_bairro == 'Fundaçao':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0)[0]))
-if q_bairro == 'Ipiranga':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0)[0]))
-if q_bairro == 'Jardim_São_Caetano':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0)[0]))
-if q_bairro == 'Maua':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0)[0]))
-if q_bairro == 'Nova_Gerti':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0)[0]))
-if q_bairro == 'Olímpico':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0)[0]))
-if q_bairro == 'Osvaldo_Cruz':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0)[0]))
-if q_bairro == 'Santa_Maria':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0)[0]))
-if q_bairro == 'Santa_Paula':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0)[0]))
-if q_bairro == 'Santo_Antônio':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0)[0]))
-if q_bairro == 'Saúde':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0)[0]))
-if q_bairro == 'Vila_Mariana':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0)[0]))
-if q_bairro == 'Vila_Prudente':
-    st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1)[0]))
+    if q_bairro == 'Aclimação':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)[0]))
+    if q_bairro == 'Barcelona':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)[0]))
+    if q_bairro == 'Boa_Vista':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0)[0]))
+    if q_bairro == 'Ceramica':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0)[0]))
+    if q_bairro == 'Fundaçao':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0)[0]))
+    if q_bairro == 'Ipiranga':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0)[0]))
+    if q_bairro == 'Jardim_São_Caetano':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0)[0]))
+    if q_bairro == 'Maua':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0)[0]))
+    if q_bairro == 'Nova_Gerti':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0)[0]))
+    if q_bairro == 'Olímpico':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0)[0]))
+    if q_bairro == 'Osvaldo_Cruz':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0)[0]))
+    if q_bairro == 'Santa_Maria':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0)[0]))
+    if q_bairro == 'Santa_Paula':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0)[0]))
+    if q_bairro == 'Santo_Antônio':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0)[0]))
+    if q_bairro == 'Saúde':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0)[0]))
+    if q_bairro == 'Vila_Mariana':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0)[0]))
+    if q_bairro == 'Vila_Prudente':
+        st.subheader('O valor previsto é: R$ {:,.2f}'.format(prever_resultado(q_area,q_banheiro,q_vaga,q_quarto,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1)[0]))
 
 
-st.write('*Nota: O modelo de previsão foi criado com base em 11.433 anúncios imóveis coletados em 16/08/2022*')
+    st.write('*Nota: O modelo de previsão foi criado com base em 11.433 anúncios imóveis coletados em 16/08/2022*')
